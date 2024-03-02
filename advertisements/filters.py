@@ -4,8 +4,8 @@ from advertisements.models import Advertisement
 
 
 STATUS_CHOICES = (
-    ("open", "OPEN"),
-    ("closed", "CLOSED")
+    ("OPEN", "Открыто"),
+    ("CLOSED", "Закрыто")
 )
 
 

@@ -38,7 +38,9 @@ class AdvertisementSerializer(serializers.ModelSerializer):
             creator=self.context["request"].user,
             status=AdvertisementStatusChoices.OPEN
         ).count()
-        if open_advertisements >= 10 and data.get("status") == AdvertisementStatusChoices.OPEN:
+        if open_advertisements >= 10 and\
+                data.get("status") == AdvertisementStatusChoices.OPEN or\
+                self.context['request'].method == 'POST':
             raise serializers.ValidationError(
                 """
                 Вы достигли максимума открытых объявений.

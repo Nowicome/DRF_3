@@ -24,10 +24,5 @@ class AdvertisementViewSet(ModelViewSet):
         # return []
 
         if self.action in ("create", "update", "partial_update", "destroy"):
-            if self.action == "create":
-                self.permission_classes = [IsAuthenticated, IsOwner]
-            elif IsAdminUser():
-                self.permission_classes = [IsAuthenticated, IsAdminUser]
-            else:
-                self.permission_classes = [IsAuthenticated, IsOwner]
+            self.permission_classes = [IsAuthenticated, IsOwner]
         return super(self.__class__, self).get_permissions()
